@@ -3,11 +3,11 @@
 const Controller = require('egg').Controller;
 
 class HomeController extends Controller {
-  async index() {
-    const { ctx } = this;
-    const { id } = ctx.query
-    ctx.body = id
-  }
+  // async index() {
+  //   const { ctx } = this;
+  //   const { id } = ctx.query
+  //   ctx.body = id
+  // }
   // async user() {
   //   const { ctx } = this;
   //   const { id } = ctx.params
@@ -28,6 +28,14 @@ class HomeController extends Controller {
       name,
       slogen
     }
+  }
+  // ejs模板
+  async index() {
+    const { ctx } = this;
+    // ctx.render 默认会去view文件夹去寻找index.html，这是egg自己约定俗成的
+    await ctx.render('index.html', {
+      title: '我是万章',
+    });
   }
 }
 

@@ -26,6 +26,11 @@ module.exports = appInfo => {
     },
     domainWhiteList: ['*'], // 配置白名单
   };
+  // 配置ejs
+  config.view = {
+    // 将view文件夹下的.html后缀的文件，识别为.ejs
+    mapping: {'.html':'ejs'}
+  }
   // add your user config here
   const userConfig = {
     // myAppName: 'egg',
