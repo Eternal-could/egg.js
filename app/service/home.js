@@ -30,6 +30,21 @@ class HomeService extends Service {
             return null;
         }
     }
+    // 编辑接口
+    async editUser(id, name) {
+        const { ctx, app } = this;
+        try {
+            const result = await app.mysql.update('list', { name }, {
+                where: {
+                    id
+                }
+            });
+            return result;
+        } catch (e) {
+            console.log(e);
+            return null;
+        }
+    }
 }
 
 module.exports = HomeService;

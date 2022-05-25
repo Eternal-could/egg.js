@@ -54,6 +54,25 @@ class HomeController extends Controller {
       }
     }
   }
+  // 编辑用户
+  async editUser() {
+    const { ctx } = this;
+    const { id, name } = ctx.request.body;
+    try {
+      const result = await ctx.service.home.editUser(id, name);
+      ctx.body = {
+        code: 200,
+        msg: '修改用户成功',
+        data: null
+      }
+    } catch (e) {
+      ctx.body = {
+        code: 500,
+        msg: '修改用户失败',
+        data: null
+      }
+    }
+  }
 }
 
 module.exports = HomeController;
