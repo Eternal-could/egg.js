@@ -45,6 +45,17 @@ class HomeService extends Service {
             return null;
         }
     }
+    // 删除接口
+    async deleteUser(id) {
+        const { ctx, app } = this;
+        try {
+            const result = await app.mysql.delete('list', { id });
+            return result
+        } catch (e) {
+            console.log(e);
+            return null;
+        }
+    }
 }
 
 module.exports = HomeService;

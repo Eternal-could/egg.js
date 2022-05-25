@@ -73,6 +73,26 @@ class HomeController extends Controller {
       }
     }
   }
+  // 删除用户
+  async deleteUser() {
+    const { ctx } = this;
+    const { id } = ctx.request.body;
+    try {
+      const result = await ctx.service.home.deleteUser(id);
+      console.log('result',result)
+      ctx.body = {
+        code: 200,
+        msg: '删除用户成功',
+        data: null
+      }
+    } catch (e) {
+      ctx.body = {
+        code: 500,
+        msg: '删除用户失败',
+        data: null
+      }
+    }
+  }
 }
 
 module.exports = HomeController;
