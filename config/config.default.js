@@ -41,3 +41,24 @@ module.exports = appInfo => {
     ...userConfig,
   };
 };
+
+// 配置mysql
+exports.mysql = {
+  // 单数据库信息配置
+  client: {
+    // host
+    host: 'localhost',
+    // 端口号
+    port: '3306',
+    // 用户名
+    user: 'root',
+    // 密码 如果没有设置就不写
+    password: '2794221278A',
+    // 自己建立的数据库名称
+    database: 'test'
+  },
+  // 加载到app上， 默认开启
+  app: true,
+  // 是否加载到agent上 默认关闭
+  agent: false,
+};
