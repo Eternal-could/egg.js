@@ -20,14 +20,12 @@ class HomeController extends Controller {
       title
     };
   }
+
+  // 获取用户信息
   async user() {
-    // 获取用户信息
     const { ctx } = this;
-    const { name, slogen } = await ctx.service.home.user();
-    ctx.body = {
-      name,
-      slogen
-    }
+    const result = await ctx.service.home.user();
+    ctx.body = result;
   }
   // ejs模板
   async index() {
@@ -36,6 +34,25 @@ class HomeController extends Controller {
     await ctx.render('index.html', {
       title: '我是万章',
     });
+  }
+  // 添加用户
+  async addUser() {
+    const { ctx } = this;
+    const { name } = ctx.request.body;
+    try {
+      const result = await ctx.service.home.addUser(name);
+      ctx.body = {
+        code: 200,
+        msg: '添加成功',
+        data: null
+      }
+    } catch (e) {
+      ctx.body = {
+        code: 500,
+        msg: '添加失败',
+        data: null
+      }
+    }
   }
 }
 

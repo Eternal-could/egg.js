@@ -18,6 +18,26 @@ module.exports = appInfo => {
   // add your middleware config here
   config.middleware = [];
 
+  // // 配置mysql
+  config.mysql = {
+    // 单数据库信息配置
+    client: {
+      // host
+      host: 'localhost',
+      // 端口号
+      port: '3306',
+      // 用户名
+      user: 'root',
+      // 密码 如果没有设置就不写
+      password: '2794221278A',
+      // 自己建立的数据库名称
+      database: 'test'
+    },
+    // 加载到app上， 默认开启
+    app: true,
+    // 是否加载到agent上 默认关闭
+    agent: false,
+  };
   // 关闭csrf
   config.security = {
     csrf: {
@@ -26,6 +46,8 @@ module.exports = appInfo => {
     },
     domainWhiteList: ['*'], // 配置白名单
   };
+
+
   // 配置ejs
   config.view = {
     // 将view文件夹下的.html后缀的文件，识别为.ejs
@@ -42,23 +64,3 @@ module.exports = appInfo => {
   };
 };
 
-// 配置mysql
-exports.mysql = {
-  // 单数据库信息配置
-  client: {
-    // host
-    host: 'localhost',
-    // 端口号
-    port: '3306',
-    // 用户名
-    user: 'root',
-    // 密码 如果没有设置就不写
-    password: '2794221278A',
-    // 自己建立的数据库名称
-    database: 'test'
-  },
-  // 加载到app上， 默认开启
-  app: true,
-  // 是否加载到agent上 默认关闭
-  agent: false,
-};
